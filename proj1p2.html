@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Streaming video processing with GPU.js</title>
+  <script src="js/gpu-browser.min.js"></script>
+</head>
+<body>
+<h1>Streaming video processing with GPU.js</h1>
+
+<div style="text-align: center">
+  <label><input type="checkbox" name="check" id="no-filter"onclick="onlyOne(this)" checked>No filter</label>
+  <label><input type="checkbox" name="check" id="sharpen-filter" onclick="onlyOne(this)">Sharpen filter</label>
+  <label><input type="checkbox" name="check" id="edge-filter" onclick="onlyOne(this)">Edge filter</label>
+  <label><input type="checkbox" name="check" id="fade-filter" onclick="onlyOne(this)">Fade filter</label>
+  <label><input type="checkbox" name="check" id="blur-filter" onclick="onlyOne(this)">Blur filter</label>
+  <label><input type="checkbox" name="check" id="pipeline-filter" onclick="onlyOne(this)">pipeline</label><br />
+  <div id="paramForm">
+    <form name="myForm" onsubmit="validateUserInput(); return false">
+      Custom parameter: <input type="text" id="parameter" name="fname">
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+  
+  <label><input type="checkbox" id="gpu-enabled" checked /> GPU enabled</label>
+</div>
+
+<video hidden id="video" width="1024" height="768"></video>
+<canvas hidden id="videoCanvas" width="1024" height="768"></canvas>
+
+<script src="js/videosetup.js"></script>
+
+<div id="canvas-parent" class="grid-item">
+  <h3>GPU.js Graphical Output <span id="fps-number">0</span><span> fps</span></h3>
+</div>
+
+<script src="js/kernel.js"></script>
+
+</body>
+</html>
